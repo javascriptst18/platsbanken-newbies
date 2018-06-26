@@ -25,10 +25,10 @@ getAnnonser();
 function createCards(platsannonser) {
   const container = document.querySelector('#allaAnnonser'); 
   let html = ''; 
-  for(let annonser of platsannonser) {
+  for(let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
     <div class="card" style="background-color: lightgrey">
-    <p>${annonser.matchingdata}</p>
+    <p>${annonser.annonsrubrik}</p>
     </div>`; 
   };
   container.innerHTML = html; 
