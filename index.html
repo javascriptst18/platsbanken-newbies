@@ -21,14 +21,26 @@
   </header>
 
   <main class="container">
-    <div class="input-group mb-3" id="searchField">
+    <!--Dropdown Filter/Sökfunktion-->
+    <div class="input-group mb-3">
+
+      <!-- Det som står på 'knappen' bredvid (här: välj) -->
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Sök</span>
+        <label class="input-group-text" for="yrkesFilter">Välj</label>
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      <!-- Det som en kan välja ifrån -->
+      <select class="custom-select" id="yrkesFilter">
+        <option selected>yrkesområde...</option>
+        <!-- yrkesID: 3-->
+        <option value="IT">Data/IT</opt1on>
+          <!-- yrkesID: 1-->
+          <option value="Ekonomi">Administration, ekonomi, juridik</option>
+          <!-- yrkesID: 11-->
+          <option value="Media">Kultur, media, design</option>
+      </select>
     </div>
-    </div>
-    </div>
+
+    <!-- Här visas alla platsannonser-->
     <div class="card" id="allaAnnonser">
 
     </div>
