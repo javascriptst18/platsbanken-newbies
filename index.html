@@ -22,18 +22,22 @@
 
   <main class="container">
     <!--Dropdown Filter/Sökfunktion-->
-    <div class="input-group mb-3" id="searchField">
+    <div class="input-group mb-3">
+
+      <!-- Det som står på 'knappen' bredvid (här: sök) -->
       <div class="input-group-prepend">
-        <label class="input-group-text" for="inputGroupSelect01">Sök</label>
+        <label class="input-group-text" for="yrkesFilter">Sök</label>
       </div>
-      <select class="custom-select" id="inputGroupSelect01">
+      <!-- Det som en kan välja ifrån -->
+      <select class="custom-select" id="yrkesFilter">
         <option selected>Välj ett yrkesområde...</option>
-        <option value="1">IT</option>
-        <option value="2">Ekonomi</option>
-        <option value="3">Media</option>
+        <option value="IT">IT</option>
+        <option value="Ekonomi">Ekonomi</option>
+        <option value="Media">Media</option>
       </select>
     </div>
 
+    <!-- Här visas alla platsannonser-->
     <div class="card" id="allaAnnonser">
 
     </div>
