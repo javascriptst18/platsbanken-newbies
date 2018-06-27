@@ -8,13 +8,29 @@
 searchByCriteria('platsannonser/matchning?lanid=1&yrkesomradeid=3&antalrader=30');
 */
 
-const itURL = `http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&yrkesomradeid=3&antalrader=30`;
-
+const itURL = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&yrkesomradeid=3&antalrader=30';
+const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&antalrader=50';
 
 let platsannonser = [];
+let itAnnonser = [];
 
+const container = document.querySelector('#allaAnnonser');
+const filteredIT = document.querySelector('#filterIT');
+filteredIT.addEventListener('change', showITAnnonser);
+
+//filter function
+async function showITAnnonser() {
+  fetch(itURL)
+  .then((response) => response.json())
+  .then((itAnnonser) => {
+    console.log(itAnnonser);
+  })
+}
+
+showITAnnonser();
+
+//function get all ads
 async function getAnnonser() {
-  let url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&antalrader=50';
   fetch(url)
     .then((response) => response.json())
     .then((platsannonser) => {
@@ -24,8 +40,8 @@ async function getAnnonser() {
 
 getAnnonser();
 
+
 function createCards(platsannonser) {
-  const container = document.querySelector('#allaAnnonser');
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
