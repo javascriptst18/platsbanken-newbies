@@ -28,8 +28,15 @@ function createCards(platsannonser) {
   for(let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
     <div class="card" style="background-color: lightgrey">
-    <p>${annonser.annonsrubrik}</p>
+    <h5><a href="${annonser.annonsurl}">${annonser.annonsrubrik}</a></h5>
+    <p><strong>Yrkesbenämning: </strong>${annonser.yrkesbenamning}</p>
+    <p><strong>Arbetsplats: </strong>${annonser.arbetsplatsnamn}</p>
+    <p><strong>kommun: </strong>${annonser.kommunnamn}</p>
+    <p><strong>Sista ansökningsdag: </strong>${annonser.sista_ansokningsdag}</p>
+    <p><strong>Anställningstyp: </strong>${annonser.anstallningstyp}</p>
+   
     </div>`; 
   };
   container.innerHTML = html; 
 }
+ 
