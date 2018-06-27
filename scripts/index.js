@@ -16,14 +16,14 @@ let itAnnonser = [];
 
 const container = document.querySelector('#allaAnnonser');
 const filteredIT = document.querySelector('#filterIT');
-filteredIT.addEventListener('change', showITAnnonser);
+filteredIT.addEventListener('click', showITAnnonser);
 
 //filter function
 async function showITAnnonser() {
   fetch(itURL)
   .then((response) => response.json())
   .then((itAnnonser) => {
-    console.log(itAnnonser);
+    createCards(itAnnonser);
   })
 }
 
