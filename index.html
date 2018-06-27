@@ -21,14 +21,19 @@
   </header>
 
   <main class="container">
+    <!--Dropdown Filter/Sökfunktion-->
     <div class="input-group mb-3" id="searchField">
       <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroup-sizing-default">Sök</span>
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
       </div>
-      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+      <select class="custom-select" id="inputGroupSelect01">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
     </div>
-    </div>
-    </div>
+
     <div class="card" id="allaAnnonser">
 
     </div>
