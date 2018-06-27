@@ -1,33 +1,24 @@
-/*async function searchByCriteria(searchCriteria) {
-  const baseURL = 'http://api.arbetsformedlingen.se/af/v0/';
-  const responseObject = await fetch(baseURL + searchCriteria);
-  const matches = await responseObject.json();
-  console.log(matches);
-}
-
-searchByCriteria('platsannonser/matchning?lanid=1&yrkesomradeid=3&antalrader=30');
-*/
-
-const itURL = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&yrkesomradeid=3&antalrader=30';
+//definera variabler
 const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&antalrader=50';
-
 let platsannonser = [];
-let itAnnonser = [];
-
+let filtreradPaYrken = [];
 const container = document.querySelector('#allaAnnonser');
-const filteredIT = document.querySelector('#filterIT');
-filteredIT.addEventListener('click', showITAnnonser);
+const yrkesFilter = document.querySelector('#yrkesFilter');
 
-//filter function
-async function showITAnnonser() {
-  fetch(itURL)
+//lägg till eventlistener på yrkesfilter
+yrkesFilter.addEventListener('change', visaYrkesFilter);
+
+
+//yrkesfilter function
+async function visaYrkesFilter(event) {
+  const value = event.target.value;
+  const yrkesUrl = url + '&yrkesomradeid=' + value;
+  fetch(yrkesUrl)
   .then((response) => response.json())
-  .then((itAnnonser) => {
-    createCards(itAnnonser);
+  .then((filtreradPaYrken) => {
+    createCards(filtreradPaYrken);
   })
 }
-
-showITAnnonser();
 
 //function get all ads
 async function getAnnonser() {
@@ -38,9 +29,10 @@ async function getAnnonser() {
     })
 }
 
+//kalla på funktionen getannonser
 getAnnonser();
 
-
+//skapa html lista
 function createCards(platsannonser) {
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
