@@ -30,7 +30,7 @@ async function getAnnonser() {
 }
 
 //kalla på funktionen getannonser
-getAnnonser();
+//getAnnonser();
 
 //skapa html lista
 function createCards(platsannonser) {
