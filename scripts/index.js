@@ -1,4 +1,4 @@
-//definera variabler
+//defining variables
 const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=50';
 let platsannonser = [];
 let filtreradPaYrken = [];
@@ -7,12 +7,12 @@ const container = document.querySelector('#allaAnnonser');
 const yrkesFilter = document.querySelector('#yrkesFilter');
 const areaFilter = document.querySelector('#areaID');
 
-//lägg till eventlisteners
+//add eventlisteners
 yrkesFilter.addEventListener('change', visaYrkesFilter);
 areaFilter.addEventListener('change', showAreaFilter);
 
 
-//areafilter function
+//add areafilter function
 async function showAreaFilter(event) {
   const value = event.target.value;
   const areaURL = url + '&lanid=' + value;
@@ -23,7 +23,7 @@ async function showAreaFilter(event) {
     })
 }
 
-//yrkesfilter function
+//add yrkesfilter function
 async function visaYrkesFilter(event) {
   const value = event.target.value;
   const yrkesUrl = url + '&lanid=' + areaID.value + '&yrkesomradeid=' + value;
@@ -34,7 +34,7 @@ async function visaYrkesFilter(event) {
     })
 }
 
-//function get all ads
+//all adds
 async function getAnnonser() {
   fetch(url)
     .then((response) => response.json())
@@ -43,10 +43,10 @@ async function getAnnonser() {
     })
 }
 
-//kalla på funktionen getannonser
+//call the function getAds
 //getAnnonser();
 
-//skapa html lista
+//create html
 function createCards(platsannonser) {
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
