@@ -14,10 +14,10 @@ async function visaYrkesFilter(event) {
   const value = event.target.value;
   const yrkesUrl = url + '&yrkesomradeid=' + value;
   fetch(yrkesUrl)
-  .then((response) => response.json())
-  .then((filtreradPaYrken) => {
-    createCards(filtreradPaYrken);
-  })
+    .then((response) => response.json())
+    .then((filtreradPaYrken) => {
+      createCards(filtreradPaYrken);
+    })
 }
 
 //function get all ads
@@ -41,12 +41,24 @@ function createCards(platsannonser) {
     <h5><a href="${annonser.annonsurl}">${annonser.annonsrubrik}</a></h5>
     <p><strong>Yrkesbenämning: </strong>${annonser.yrkesbenamning}</p>
     <p><strong>Arbetsplats: </strong>${annonser.arbetsplatsnamn}</p>
-    <p><strong>kommun: </strong>${annonser.kommunnamn}</p>
-    <p><strong>Sista ansökningsdag: </strong>${annonser.sista_ansokningsdag}</p>
+    <p><strong>Kommun: </strong>${annonser.kommunnamn}</p>
+    <p><strong>Sista ansökningsdag: </strong>${utility.formatDate(annonser.sista_ansokningsdag)}</p>
     <p><strong>Anställningstyp: </strong>${annonser.anstallningstyp}</p>
    
-    </div>`; 
+    </div>`;
   };
-  container.innerHTML = html; 
+  container.innerHTML = html;
 }
 
+
+//Utility functions (formatting etc) - tack grupp 4
+
+utility = {
+  //Formats inputdate from json from UTC to 'en-gb'
+  formatDate(platsannonser) {
+    //Converts input from string to Date and then formats date as 'en-gb' (dd/mm/yyyy)
+    let formattedDate = new Date(platsannonser).toLocaleDateString('en-gb');
+    //Return the formatted date
+    return formattedDate;
+  }
+}
