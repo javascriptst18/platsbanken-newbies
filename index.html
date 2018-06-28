@@ -30,11 +30,30 @@
 
       <!-- Det som står på 'knappen' bredvid (här: välj) -->
       <div class="input-group-prepend">
+        <label class="input-group-text" for="areaID">Välj</label>
+      </div>
+      <!-- Det som en kan välja ifrån -->
+      <select class="custom-select" id="areaID">
+        <option selected>Län</option>
+        <!-- yrkesID: 3-->
+        <option value="1">Stockholm</option>
+        <option value="12">Skåne</option>
+        <option value="4">Södermanland</option>
+        <option value="18">Örebro</option>
+        <option value="9">Gotland</option>
+      </select>
+    </div>
+    
+    <!--Dropdown Filter/Sökfunktion-->
+    <div class="input-group mb-3">
+
+      <!-- Det som står på 'knappen' bredvid (här: välj) -->
+      <div class="input-group-prepend">
         <label class="input-group-text" for="yrkesFilter">Välj</label>
       </div>
       <!-- Det som en kan välja ifrån -->
       <select class="custom-select" id="yrkesFilter">
-        <option selected>yrkesområde...</option>
+        <option selected>yrkesområde</option>
         <!-- yrkesID: 3-->
         <option value="3">Data/IT</option>
           <!-- yrkesID: 1-->
