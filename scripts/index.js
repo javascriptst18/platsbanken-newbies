@@ -1,21 +1,26 @@
 //defining variables
-const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=50';
+const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=3';
+let areaURL;
+let yrkesURL;
 let platsannonser = [];
 let filtreradPaYrken = [];
 let filteredByArea = [];
+let pageNumber = 1;
 const container = document.querySelector('#allaAnnonser');
 const yrkesFilter = document.querySelector('#yrkesFilter');
 const areaFilter = document.querySelector('#areaID');
+const loadMore = document.querySelector('#showMore');
 
 //add eventlisteners
 yrkesFilter.addEventListener('change', visaYrkesFilter);
 areaFilter.addEventListener('change', showAreaFilter);
+loadMore.addEventListener('click', showMoreAds);
 
 
 //add areafilter function
 async function showAreaFilter(event) {
   const value = event.target.value;
-  const areaURL = url + '&lanid=' + value;
+  areaURL = url + '&lanid=' + value;
   fetch(areaURL)
     .then((response) => response.json())
     .then((filteredByArea) => {
@@ -26,13 +31,24 @@ async function showAreaFilter(event) {
 //add yrkesfilter function
 async function visaYrkesFilter(event) {
   const value = event.target.value;
-  const yrkesUrl = url + '&lanid=' + areaID.value + '&yrkesomradeid=' + value;
-  fetch(yrkesUrl)
+  yrkesURL = areaURL + '&yrkesomradeid=' + value;
+  fetch(yrkesURL)
     .then((response) => response.json())
     .then((filtreradPaYrken) => {
       createCards(filtreradPaYrken);
     })
 }
+
+async function showMoreAds() {
+  pageNumber = pageNumber + 1;
+ const showMoreResponse = yrkesURL + '&sida=' + pageNumber;
+ fetch(showMoreResponse)
+ .then((response) => response.json())
+ .then((platsannonser) => {
+    createCards(platsannonser);
+ })
+}
+
 
 //all adds
 async function getAnnonser() {
