@@ -51,14 +51,15 @@ function createCards(platsannonser) {
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
-    <div class="card" style="background-color: lightgrey">
+    <div class="card" style="background-color: white">
+    <div class="card-body">
     <h5><a href="${annonser.annonsurl}">${annonser.annonsrubrik}</a></h5>
     <p><strong>Yrkesbenämning: </strong>${annonser.yrkesbenamning}</p>
     <p><strong>Arbetsplats: </strong>${annonser.arbetsplatsnamn}</p>
     <p><strong>Kommun: </strong>${annonser.kommunnamn}</p>
     <p><strong>Sista ansökningsdag: </strong>${utility.formatDate(annonser.sista_ansokningsdag)}</p>
     <p><strong>Anställningstyp: </strong>${annonser.anstallningstyp}</p>
-   
+    </div>
     </div>`;
   };
   container.innerHTML = html;

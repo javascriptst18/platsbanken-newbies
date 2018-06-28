@@ -1,4 +1,5 @@
 $banana: #fac863;
+$green: #72934e;
 
 
 .🍌 {
@@ -14,5 +15,10 @@ header, footer {
 }
 
 .jumbotron {
-  background-color: #72934e;
+  background-color: $green;
+  color: white;
+}
+
+a {
+  color: $green;
 }
