@@ -1,18 +1,32 @@
 //definera variabler
-const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?lanid=1&antalrader=50';
+const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=50';
 let platsannonser = [];
 let filtreradPaYrken = [];
+let filteredByArea = [];
 const container = document.querySelector('#allaAnnonser');
 const yrkesFilter = document.querySelector('#yrkesFilter');
+const areaFilter = document.querySelector('#areaID');
 
-//lägg till eventlistener på yrkesfilter
+//lägg till eventlisteners
 yrkesFilter.addEventListener('change', visaYrkesFilter);
+areaFilter.addEventListener('change', showAreaFilter);
 
+
+//areafilter function
+async function showAreaFilter(event) {
+  const value = event.target.value;
+  const areaURL = url + '&lanid=' + value;
+  fetch(areaURL)
+    .then((response) => response.json())
+    .then((filteredByArea) => {
+      createCards(filteredByArea);
+    })
+}
 
 //yrkesfilter function
 async function visaYrkesFilter(event) {
   const value = event.target.value;
-  const yrkesUrl = url + '&yrkesomradeid=' + value;
+  const yrkesUrl = url + '&lanid=' + areaID.value + '&yrkesomradeid=' + value;
   fetch(yrkesUrl)
     .then((response) => response.json())
     .then((filtreradPaYrken) => {
