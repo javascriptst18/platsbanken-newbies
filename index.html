@@ -18,57 +18,57 @@
 <body>
   <div class="container-fluid bg-2 text-center">
     <div class="jumbotron">
-      <h1>Hitta.</h1>      
+      <h1>Hitta.</h1>
       <p>blablabla</p>
-    </div>     
+    </div>
   </div>
 
   <main class="container">
-    
-    <!--Dropdown Filter/Sökfunktion-->
-    <div class="input-group mb-3">
+    <div class="row">
+      <!--Dropdown Filter/Sökfunktion-->
+      <div class="input-group mb-3 col-sm-6">
 
-      <!-- Det som står på 'knappen' bredvid (här: välj) -->
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="areaID">Välj</label>
+        <!-- Det som står på 'knappen' bredvid (här: välj) -->
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="areaID">Välj</label>
+        </div>
+        <!-- Det som en kan välja ifrån -->
+        <select class="custom-select" id="areaID">
+          <option selected>Län</option>
+          <!-- yrkesID: 3-->
+          <option value="1">Stockholm</option>
+          <option value="12">Skåne</option>
+          <option value="4">Södermanland</option>
+          <option value="18">Örebro</option>
+          <option value="9">Gotland</option>
+        </select>
       </div>
-      <!-- Det som en kan välja ifrån -->
-      <select class="custom-select" id="areaID">
-        <option selected>Län</option>
-        <!-- yrkesID: 3-->
-        <option value="1">Stockholm</option>
-        <option value="12">Skåne</option>
-        <option value="4">Södermanland</option>
-        <option value="18">Örebro</option>
-        <option value="9">Gotland</option>
-      </select>
-    </div>
-    
-    <!--Dropdown Filter/Sökfunktion-->
-    <div class="input-group mb-3">
 
-      <!-- Det som står på 'knappen' bredvid (här: välj) -->
-      <div class="input-group-prepend">
-        <label class="input-group-text" for="yrkesFilter">Välj</label>
-      </div>
-      <!-- Det som en kan välja ifrån -->
-      <select class="custom-select" id="yrkesFilter">
-        <option selected>Yrkesområde</option>
-        <!-- yrkesID: 3-->
-        <option value="3">Data/IT</option>
+      <!--Dropdown Filter/Sökfunktion-->
+      <div class="input-group mb-3 col-sm-6">
+
+        <!-- Det som står på 'knappen' bredvid (här: välj) -->
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="yrkesFilter">Välj</label>
+        </div>
+        <!-- Det som en kan välja ifrån -->
+        <select class="custom-select" id="yrkesFilter">
+          <option selected>Yrkesområde</option>
+          <!-- yrkesID: 3-->
+          <option value="3">Data/IT</option>
           <!-- yrkesID: 1-->
           <option value="1">Administration, ekonomi, juridik</option>
           <!-- yrkesID: 11-->
           <option value="11">Kultur, media, design</option>
-      </select>
+        </select>
+      </div>
     </div>
-  
 
     <!-- Här visas alla platsannonser-->
     <div class="card" id="allaAnnonser"></div>
 
     <!-- lägger till en les mer button-->
-  <button type="button" class="btn btn-default" data-toggle="collapse" id="showMore">Visa mera</button>
+    <button type="button" class="btn btn-default" data-toggle="collapse" id="showMore">Visa mera</button>
 
   </main>
 
