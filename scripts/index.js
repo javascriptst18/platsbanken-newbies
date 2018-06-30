@@ -1,5 +1,5 @@
 //defining variables
-const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=3';
+const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=8';
 let areaURL;
 let yrkesURL;
 let platsannonser = [];
@@ -67,7 +67,6 @@ function createCards(platsannonser) {
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
-    <div class="card" style="background-color: white">
     <div class="card-body">
     <h5><a href="${annonser.annonsurl}">${annonser.annonsrubrik}</a></h5>
     <p><strong>Yrkesbenämning: </strong>${annonser.yrkesbenamning}</p>
@@ -75,7 +74,6 @@ function createCards(platsannonser) {
     <p><strong>Kommun: </strong>${annonser.kommunnamn}</p>
     <p><strong>Sista ansökningsdag: </strong>${utility.formatDate(annonser.sista_ansokningsdag)}</p>
     <p><strong>Anställningstyp: </strong>${annonser.anstallningstyp}</p>
-    </div>
     </div>`;
   };
   container.innerHTML = html;
