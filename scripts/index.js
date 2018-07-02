@@ -1,46 +1,47 @@
 //defining variables
-const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=3';
+const url = 'http://api.arbetsformedlingen.se/af/v0/platsannonser/matchning?antalrader=8';
 let areaURL;
 let yrkesURL;
 let platsannonser = [];
-let filtreradPaYrken = [];
-let filteredByArea = [];
+let filterJobs = [];
+let filterCity = [];
 let pageNumber = 1;
-const container = document.querySelector('#allaAnnonser');
-const yrkesFilter = document.querySelector('#yrkesFilter');
-const areaFilter = document.querySelector('#areaID');
+const showResult = document.querySelector('#allAds');
+const filterByJobs = document.querySelector('#yrkesFilter');
+const filterByCity = document.querySelector('#areaID');
 const loadMore = document.querySelector('#showMore');
 
 //add eventlisteners
-yrkesFilter.addEventListener('change', visaYrkesFilter);
-areaFilter.addEventListener('change', showAreaFilter);
+filterByJobs.addEventListener('change', showJobFilter);
+filterByCity.addEventListener('change', showAreaFilter);
 loadMore.addEventListener('click', showMoreAds);
 
 
-//add areafilter function
+//add cityfilter function
 async function showAreaFilter(event) {
   const value = event.target.value;
   areaURL = url + '&lanid=' + value;
   fetch(areaURL)
     .then((response) => response.json())
-    .then((filteredByArea) => {
-      createCards(filteredByArea);
+    .then((filterCity) => {
+      createCards(filterCity);
     })
 }
 
-//add yrkesfilter function
-async function visaYrkesFilter(event) {
+//add jobfilter function
+async function showJobFilter(event) {
   const value = event.target.value;
   yrkesURL = areaURL + '&yrkesomradeid=' + value;
   fetch(yrkesURL)
     .then((response) => response.json())
-    .then((filtreradPaYrken) => {
-      createCards(filtreradPaYrken);
+    .then((filterJobs) => {
+      createCards(filterJobs);
     })
 }
 
+//load more function
 async function showMoreAds() {
-  pageNumber = pageNumber + 1;
+pageNumber = pageNumber + 1;
  const showMoreResponse = yrkesURL + '&sida=' + pageNumber;
  fetch(showMoreResponse)
  .then((response) => response.json())
@@ -60,14 +61,13 @@ async function getAnnonser() {
 }
 
 //call the function getAds
-//getAnnonser();
+getAnnonser();
 
 //create html
 function createCards(platsannonser) {
   let html = '';
   for (let annonser of platsannonser.matchningslista.matchningdata) {
     html += `
-    <div class="card" style="background-color: white">
     <div class="card-body">
     <h5><a href="${annonser.annonsurl}">${annonser.annonsrubrik}</a></h5>
     <p><strong>Yrkesbenämning: </strong>${annonser.yrkesbenamning}</p>
@@ -75,10 +75,9 @@ function createCards(platsannonser) {
     <p><strong>Kommun: </strong>${annonser.kommunnamn}</p>
     <p><strong>Sista ansökningsdag: </strong>${utility.formatDate(annonser.sista_ansokningsdag)}</p>
     <p><strong>Anställningstyp: </strong>${annonser.anstallningstyp}</p>
-    </div>
     </div>`;
   };
-  container.innerHTML = html;
+  showResult.innerHTML = html;
 }
 
 

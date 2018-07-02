@@ -20,26 +20,19 @@
     <div class="jumbotron">
       <h1>Lediga jobb i Sverige</h1>
       <p class="subtitle">Hitta (några) jobb i (nästan hela) Sverige</p>
-      <p class="step1">Steg 1: Välj län. </p>
-      <p class="step1">Steg 2: Välj yrkesområde. </p>
-      <p class="step1">OBS! Du måste välja yrkesområde.</p>
     </div>
   </div>
 
   <main class="container">
     <div class="row">
 
-      <!--Dropdown Filter/Sökfunktion-->
+      <!--Dropdown Filter Area-->
       <div class="input-group mb-3 col-sm-6">
-
-        <!-- Det som står på 'knappen' bredvid (här: välj) -->
         <div class="input-group-prepend">
-          <label class="input-group-text" for="areaID">Välj</label>
+          <label class="input-group-text" for="areaID">Välj län</label>
         </div>
-        <!-- Det som en kan välja ifrån -->
         <select class="custom-select" id="areaID">
-          <option selected>Län</option>
-          <!-- yrkesID: 3-->
+          <option selected>...</option>
           <option value="1">Stockholm</option>
           <option value="12">Skåne</option>
           <option value="4">Södermanland</option>
@@ -48,47 +41,35 @@
         </select>
       </div>
 
-      <!--Dropdown Filter/Sökfunktion-->
+      <!--Dropdown Filter profession-->
       <div class="input-group mb-3 col-sm-6">
-
-        <!-- Det som står på 'knappen' bredvid (här: välj) -->
         <div class="input-group-prepend">
-          <label class="input-group-text" for="yrkesFilter">Välj</label>
+          <label class="input-group-text" for="yrkesFilter">Välj yrkesområde</label>
         </div>
-        <!-- Det som en kan välja ifrån -->
         <select class="custom-select" id="yrkesFilter">
-          <option selected>Yrkesområde</option>
-          <!-- yrkesID: 3-->
+          <option selected>...</option>
           <option value="3">Data/IT</option>
-          <!-- yrkesID: 1-->
           <option value="1">Administration, ekonomi, juridik</option>
-          <!-- yrkesID: 11-->
           <option value="11">Kultur, media, design</option>
         </select>
       </div>
     </div>
 
-    <!-- Här visas alla platsannonser-->
-    <div class="card" id="allaAnnonser">
+    <!-- Show result-->
+    <div class="flex-container" id="allAds"></div>
 
-    </div>
-
-    <!-- lägger till en les mer button-->
-    <button type="button" class="btn btn-default" data-toggle="collapse" id="showMore">Nästa</button>
-
+    <!-- Load more button-->
+    <div class="center-button">
+    <button type="button" class="btn btn-default center-block" data-toggle="collapse" id="showMore">Nästa</button>
+</div>
   </main>
 
-  <footer>
+  <footer></footer>
 
-  </footer>
-
-  <!-- jQuery for Bootstrap to work-->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <!-- jQuery/scripts-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 
